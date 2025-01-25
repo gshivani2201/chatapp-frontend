@@ -35,6 +35,7 @@ import {
 import { orange } from "../../constants/color";
 import { server } from "../../constants/config";
 import { resetNotificationCount } from "../../redux/reducers/chat";
+import { NOTIFICATIONS_COUNT } from "../../constants/events";
 
 const SearchDialog = lazy(() => import("../specific/Search"));
 const NotificationsDialog = lazy(() => import("../specific/Notifications"));
@@ -48,6 +49,13 @@ const Header = () => {
     (state) => state.misc
   );
   const { notificationCount } = useSelector((state) => state.chat);
+
+  useEffect(() => {
+    getOrSaveFromLocalStorage({
+      key: NOTIFICATIONS_COUNT,
+      value: notificationCount,
+    });
+  }, [notificationCount]);
 
   const handleMobile = () => {
     dispatch(setIsMobileMenu(true));

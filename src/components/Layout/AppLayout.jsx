@@ -62,7 +62,7 @@ const AppLayout = () => (WrappedComponent) => {
     // listen to socket events
     const newMsgAlertListener = useCallback(
       (data) => {
-        if (data.chat === chatId) return;
+        if (data.chatId === chatId) return;
 
         dispatch(setNewMessagesAlert(data));
       },
@@ -138,6 +138,7 @@ const AppLayout = () => (WrappedComponent) => {
                 chatId={chatId}
                 handleDeleteChat={handleDeleteChat}
                 onlineUsers={onlineUsers}
+                newMessagesAlert={newMessagesAlert}
               />
             )}
           </Grid>

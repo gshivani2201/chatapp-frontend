@@ -42,29 +42,16 @@ const ChatItem = ({
           position: "relative",
         }}
       >
-        <AvatarCard avatar={avatar} />
+        <AvatarCard avatar={avatar} isOnline={isOnline} />
 
         <Stack>
-          <Typography>{name}</Typography>
+          <Typography >{name}</Typography>
           {newMessageAlert && (
-            <Typography>{newMessageAlert.count} New Message </Typography>
+            <Typography style={{ fontStyle: "italic", fontSize: "14px" }}>
+              {newMessageAlert.count} New Message{" "}
+            </Typography>
           )}
         </Stack>
-
-        {isOnline && (
-          <Box
-            sx={{
-              width: "10px",
-              height: "10px",
-              borderRadius: "50%",
-              backgroundColor: "green",
-              position: "absolute",
-              top: "45%",
-              right: "1rem",
-              transform: "transform(-50%)",
-            }}
-          />
-        )}
       </motion.div>
     </LinkCompStyled>
   );

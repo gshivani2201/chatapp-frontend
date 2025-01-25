@@ -5,10 +5,10 @@ import { Stack, AvatarGroup, Box, Avatar } from "@mui/material";
 import { transformImage } from "../lib/features";
 
 // Todo Transform
-const AvatarCard = ({ avatar = [], max = 4 }) => {
+const AvatarCard = ({ avatar = [], max = 4, isOnline }) => {
   return (
     <Stack direction={"row"} spacing={"0.5"}>
-      <AvatarGroup max={max} sx={{position: "relative"}}>
+      <AvatarGroup max={max} sx={{ position: "relative" }}>
         <Box width={"5rem"} height={"3rem"}>
           {avatar.map((i, index) => (
             <Avatar
@@ -23,6 +23,7 @@ const AvatarCard = ({ avatar = [], max = 4 }) => {
                   xs: `${0.5 + index} rem`,
                   sm: `${index} rem`,
                 },
+                border: isOnline ? "3px solid #66ff00" : "",
               }}
             />
           ))}
